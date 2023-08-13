@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">devskills-mobile</string>
+    <string name="numEditTextHint">Enter a number</string>
+    <string name="addBtnText">ADD</string>
+</resources>
