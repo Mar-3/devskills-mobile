@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">webdev-mobile-project</string>
+    <string name="headingTextView">New participant:</string>
+    <string name="nameTextView">Participant:</string>
+    <string name="avecTextView">Avec:</string>
+    <string name="friendTextView">Friend:</string>
+    <string name="nameHint">Jaska Jokunen</string>
+    <string name="avecHint">Niina Neponen</string>
+    <string name="friendHint">Konsta Kanninen</string>
+    <string name="addParticipantBtn">Add participant</string>
+    <string name="tablesTextView">Tables:</string>
+    <string name="tablesDefaultEditTextNumber">3</string>
+    <string name="arrangeSeatingBtn">Arrange seating</string>
+    <string name="participantListHeadingTextView">Participants:</string>
+</resources>
