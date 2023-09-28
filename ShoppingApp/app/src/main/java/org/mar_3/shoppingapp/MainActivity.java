@@ -1,25 +1,19 @@
 package org.mar_3.shoppingapp;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
-import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public DrawerLayout drawerLayout;
-    public ActionBarDrawerToggle actionBarDrawerToggle;
     public FragmentManager fragmentManager;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
 
     @Override
@@ -27,9 +21,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-        // Used as reference for navigation drawer
+        // Navigation drawer to action bar, used as reference:
         // https://www.geeksforgeeks.org/navigation-drawer-in-android/
 
         drawerLayout = findViewById(R.id.my_drawer_layout);
@@ -42,10 +34,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         this.fragmentManager = getSupportFragmentManager();
 
+        // Load the default first fragment at startup
         if (savedInstanceState == null) {
             fragmentManager.beginTransaction()
                     .setReorderingAllowed(true)
-                    .add(R.id.fragmentContainerView, FirstFragment.class, null)
+                    .add(R.id.fragmentContainerView, StartFragment.class, null)
                     .commit();
         }
     }
@@ -55,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    // Method for checking which navigation drawer item was clicked, then switching to right fragment
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -93,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    // Opening and closing the navigation drawer
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -100,7 +95,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-
+    // changed the logic when device's back button is pressed,
+    // This way the application will only close if there are fragments in the
+    // back stack of the fragment manager.
     @Override
     public void onBackPressed() {
         if (fragmentManager.getBackStackEntryCount() == 0) {

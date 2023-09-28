@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".NewListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="hello_blank_fragment"/>
-
-</FrameLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/new_list_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="10dp"
+            app:layout_constraintHorizontal_bias="0.1" android:textSize="24sp"
+            android:text="@string/new_list_header_textview"/>
+    <TextView
+            android:text="@string/new_item_name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/newItemNameTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_list_header" android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/newItemAmountTextView" android:layout_marginEnd="130dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/newItemNameEditText"
+            android:hint="@string/new_item_name_hint_textedit"
+            app:layout_constraintTop_toBottomOf="@+id/newItemNameTextView"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
+    <TextView
+            android:text="@string/new_item_amount_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/newItemAmountTextView"
+            app:layout_constraintTop_toBottomOf="@+id/new_list_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp" app:layout_constraintStart_toEndOf="@+id/newItemNameTextView"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/newItemAmountEditNumber"
+            app:layout_constraintTop_toBottomOf="@+id/newItemAmountTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/new_item_amount_default_editnumber" android:width="50sp"
+            app:layout_constraintStart_toEndOf="@+id/newItemNameEditText" android:gravity="center_horizontal"/>
+    <Button
+            android:text="@string/add_item_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/add_item_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newItemAmountEditNumber" android:layout_marginTop="20dp"/>
+    <TextView
+            android:text="@string/current_items_header_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp" android:id="@+id/items_header_textview"
+            app:layout_constraintTop_toBottomOf="@+id/add_item_button"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="25dp" app:layout_constraintBottom_toTopOf="@+id/currentItemsRecyclerView"
+            app:layout_constraintVertical_bias="0.0" android:layout_marginBottom="20dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="377dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp" android:id="@+id/currentItemsRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/add_item_button" android:layout_marginTop="60dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="80dp"/>
+    <Button
+            android:text="@string/save_list_button"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/save_list_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.79" android:layout_marginBottom="10dp"
+    />
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/spinner"
+            app:layout_constraintEnd_toStartOf="@+id/add_item_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newItemNameEditText" android:layout_marginTop="20dp"
+            app:layout_constraintHorizontal_bias="0.08"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

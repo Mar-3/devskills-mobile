@@ -5,15 +5,13 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import org.jetbrains.annotations.NotNull;
 
-public class FirstFragment extends Fragment {
+public class StartFragment extends Fragment {
 
-    public FirstFragment() {
-        super(R.layout.fragment_first);
+    public StartFragment() {
+        super(R.layout.fragment_start);
     }
 
     @Override

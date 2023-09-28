@@ -9,7 +9,20 @@
     <!-- Menu toggles -->
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <!-- new item fragment strings -->
+    <string name="new_list_header_textview">New List</string>
+    <string name="new_item_name_textview">Item name:</string>
+    <string name="new_item_name_hint_textedit">Apples</string>
+    <string name="new_item_amount_textview">Item amount:</string>
+    <string name="new_item_amount_default_editnumber">1</string>"
+    <string name="add_item_button">Add Item</string>"
+    <string name="delete_item_button">Delete Item</string>"
+    <string name="current_items_header_textview">Current items in list:</string>
+    <string name="save_list_button">Save list</string>
+
+
+    <string name="item_edit_button">Edit</string>
+
 </resources>
