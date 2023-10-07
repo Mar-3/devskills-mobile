@@ -1,22 +1,23 @@
 package org.mar_3.shoppingapp;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.TestOnly;
 
 public class NewListFragment extends Fragment {
     public NewListFragment() {
         super(R.layout.fragment_new_list);
     }
+    public ItemList currentItemList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,8 @@ public class NewListFragment extends Fragment {
 
         RecyclerView currentItemsRecyclerView = (RecyclerView) view.findViewById(R.id.currentItemsRecyclerView);
 
-        ItemList currentItemList = new ItemList("");
-        currentItemList.addItem(new Item("ASDf", 12, "Tech"));
+        currentItemList = new ItemList("");
+        currentItemList.addItem(new Item("Apples", 12, "Food"));
 
 
         ItemsAdapter adapter = new ItemsAdapter(currentItemList);
@@ -55,6 +56,7 @@ public class NewListFragment extends Fragment {
         });
 
         Button addItemButton = (Button) view.findViewById(R.id.add_item_button);
+        Button saveListButton = (Button) view.findViewById(R.id.save_list_button);
 
         Spinner categoriesSpinner = (Spinner) view.findViewById(R.id.spinner);
 
@@ -84,6 +86,25 @@ public class NewListFragment extends Fragment {
 
                 newItemNameEditText.setText("");
                 newItemAmountEditNumber.setText("1");
+            }
+        });
+
+        saveListButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Bundle args = new Bundle();
+                args.putSerializable("itemList", currentItemList);
+                ShoppingListFragment nextFragment = new ShoppingListFragment();
+                nextFragment.setArguments(args);
+
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.fragmentContainerView, nextFragment, "")
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }

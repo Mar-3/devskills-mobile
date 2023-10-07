@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "org.mar_3.shoppingapp"
-        minSdk = 28
+        minSdk = 33
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -38,6 +38,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     implementation("androidx.fragment:fragment:$fragment_version")
     implementation("androidx.fragment:fragment-ktx:$fragment_version")

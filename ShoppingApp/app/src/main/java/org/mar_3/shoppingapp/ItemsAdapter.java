@@ -66,7 +66,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         public TextView amountTextView;
         public ViewHolder (View itemView) {
             super(itemView);
-
             nameTextView = (TextView) itemView.findViewById(R.id.itemNameTextView);
             amountTextView = (TextView) itemView.findViewById(R.id.itemAmountTextView);
         }
