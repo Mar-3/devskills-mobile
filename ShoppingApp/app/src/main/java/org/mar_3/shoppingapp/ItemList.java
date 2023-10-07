@@ -33,6 +33,10 @@ public class ItemList {
         }
         return null;
     }
+
+    public void removeItemByPosition(int position) {
+        this.items.remove(position);
+    }
     public ArrayList<Item> getItemsByCategory(String category) {
         ArrayList<Item> itemsByCategory = new ArrayList<Item>();
 

@@ -5,9 +5,9 @@
               android:layout_height="wrap_content"
                 android:paddingHorizontal="50dp">
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/itemNameTextView" android:layout_weight="1"/>
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/itemAmountTextView" android:layout_weight="1"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/itemAmountTextView" android:layout_weight="1.5"/>
 </LinearLayout>

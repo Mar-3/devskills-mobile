@@ -1,5 +1,6 @@
 package org.mar_3.shoppingapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.style.IconMarginSpan;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     private ItemList itemList;
+    private OnClickListener onClickListener;
 
     @NonNull
     @NotNull
@@ -31,20 +33,32 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ArrayList<Item> items = itemList.getItems();
         TextView nameTextView = holder.nameTextView;
         nameTextView.setText(items.get(position).getName());
 
         TextView amountTextView = holder.amountTextView;
         amountTextView.setText(String.valueOf(items.get(position).getAmount()));
-        System.out.println(items.get(position).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(position);
+                }
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return this.itemList.getSize();
+    }
+
+    public void setOnClickListener(ItemsAdapter.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -57,6 +71,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             amountTextView = (TextView) itemView.findViewById(R.id.itemAmountTextView);
         }
 
+    }
+
+    public interface OnClickListener {
+        void onClick(int position);
     }
     public ItemsAdapter(ItemList i) {
         this.itemList = i;
