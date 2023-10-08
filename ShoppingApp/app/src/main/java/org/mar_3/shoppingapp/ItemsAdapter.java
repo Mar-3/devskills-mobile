@@ -2,11 +2,9 @@ package org.mar_3.shoppingapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.text.style.IconMarginSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +17,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     private ItemList itemList;
     private OnClickListener onClickListener;
 
+    public ItemsAdapter(ItemList i) {
+        this.itemList = i;
+    }
+
     @NonNull
     @NotNull
     @Override
@@ -28,7 +30,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
         View itemView = inflater.inflate(R.layout.item_row, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(itemView);
+        ViewHolder viewHolder = new ItemsAdapter.ViewHolder(itemView);
         return viewHolder;
     }
 
@@ -54,7 +56,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return this.itemList.getSize();
+        return this.itemList.getItems().size();
     }
 
     public void setOnClickListener(ItemsAdapter.OnClickListener onClickListener) {
@@ -66,20 +68,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         public TextView amountTextView;
         public ViewHolder (View itemView) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.itemNameTextView);
-            amountTextView = (TextView) itemView.findViewById(R.id.itemAmountTextView);
+            nameTextView = (TextView) itemView.findViewById(R.id.catItemNameTextView);
+            amountTextView = (TextView) itemView.findViewById(R.id.catItemAmountTextView);
         }
 
     }
 
     public interface OnClickListener {
         void onClick(int position);
-    }
-    public ItemsAdapter(ItemList i) {
-        this.itemList = i;
-    }
-    public int getCount() {
-        return this.itemList.getSize();
     }
 
     public Item getItem(int position) {

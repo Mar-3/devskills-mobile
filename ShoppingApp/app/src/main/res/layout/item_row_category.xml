@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:paddingHorizontal="50dp">
+              android:paddingHorizontal="10dp" android:gravity="start"
+              android:clipToPadding="false" android:backgroundTint="#787575">
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/itemNameTextView" android:layout_weight="1"/>
+            android:layout_height="wrap_content" android:id="@+id/catItemNameTextView" android:layout_weight="2"
+            android:translationY="-16dp"/>
     <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/itemAmountTextView" android:layout_weight="1.5"/>
+            android:layout_height="wrap_content" android:id="@+id/catItemAmountTextView" android:layout_weight="4"
+            android:translationY="-16dp"/>
     <CheckBox
-            android:text=""
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/itemCheckBox" android:layout_weight="1"/>
+            android:layout_height="match_parent" android:id="@+id/checkBox2" android:layout_weight="2"
+            android:width="120dp"/>
 </LinearLayout>

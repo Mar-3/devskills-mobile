@@ -13,6 +13,8 @@ import com.google.gson.GsonBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 public class ShoppingListFragment extends Fragment {
     private ItemList shoppingItemList;
     public ShoppingListFragment() {
@@ -36,15 +38,13 @@ public class ShoppingListFragment extends Fragment {
             this.shoppingItemList = args.getSerializable("itemList", ItemList.class);
         }
 
-        Resources res = getResources();
-        String[] categoriesList = res.getStringArray(R.array.categories_array);
-
         RecyclerView categoriesRecyclerView = (RecyclerView) view.findViewById(R.id.categoriesRecyclerView);
         if (this.shoppingItemList == null) {
             return;
         }
-        CategoriesAdapter categoriesAdapter = new CategoriesAdapter(this.shoppingItemList, categoriesList);
-        categoriesRecyclerView.setAdapter(categoriesAdapter);
+
+        CatParentAdapter adapter = new CatParentAdapter(shoppingItemList);
+        categoriesRecyclerView.setAdapter(adapter);
         categoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 

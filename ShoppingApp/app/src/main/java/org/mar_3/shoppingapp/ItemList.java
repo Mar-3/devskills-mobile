@@ -61,4 +61,8 @@ public class ItemList implements Serializable {
     public int getSize() {
         return getItems().size();
     }
+
+    public ArrayList<String> getCategories() {
+        return this.categories;
+    }
 }
